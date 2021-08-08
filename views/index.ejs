@@ -1,0 +1,87 @@
+<!DOCTYPE html> <!---->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The Open Closet</title>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    body {
+        font-family:Arial, Helvetica, sans-serif;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        background-color:#F6F6F6;
+    }
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #09BA81;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #0b9e6d;
+}
+
+.active {
+  background-color: rgb(12, 151, 107);
+}
+
+#room-container {
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: auto;
+  background: white;
+  padding: 10px;
+}
+#new-room-parent {
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+  </style>
+
+</head>
+<body>
+<div class="navbar">
+  <ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#us">Who are we</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  
+</div>
+  <div id="room-container">
+    <% Object.keys(rooms).forEach(room => { %>
+      <div><%= room %></div>
+      <a href="/<%= room %>">Join</a>
+    <% }) %>
+  </div>
+  <div id="new-room-parent">
+  <form action="/room" method="POST" id="new-room">
+    <input name="room" type="text" required>
+    <button type="submit">New Room</button>
+  </form>
+</div>
+</body>
+</html>

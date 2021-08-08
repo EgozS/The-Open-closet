@@ -1,0 +1,19 @@
+{
+  "name": "the-open-closet",
+  "version": "1.0.0",
+  "description": "The open closet is a lgbtq+ supprt website",
+  "main": "index.js",
+  "scripts": {
+    "run": "nodemon server.js"
+  },
+  "author": "Noar Latet",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "follow-redirects": "^1.14.1",
+    "localtunnel": "^2.0.1",
+    "nodemon": "^2.0.12",
+    "socket.io": "^4.1.3"
+  }
+}
