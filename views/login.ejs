@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Login</title>
+    <style>
+       body {
+        font-family:Arial, Helvetica, sans-serif;
+        }
+        
+    </style>
+    <script type="text/javascript">
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+      </script>
+    </head>
+    <body>
+        <div class="login">
+            <form id="login" action="/chklogin" method="post">
+                <label>Username:</label>   
+                <input type="text" id = "username" placeholder="Enter Username" name="username" required>  
+                <label>Password:</label>   
+                <input type="password" id = "password" placeholder="Enter Password" name="password" required>  
+                <button type="submit">Login</button>   
+            </form>            
+        </div>
+    </body>
+</html>

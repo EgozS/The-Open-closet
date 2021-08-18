@@ -3,19 +3,22 @@ const messageContainer = document.getElementById('message-container')
 const roomContainer = document.getElementById('room-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
+function htmlDecode(input){
+  var e = document.createElement('div');
+  e.innerHTML = input;
+  return e.childNodes[0].nodeValue;
+}
 
 if (messageForm != null) {
-  const name = prompt('What is your name?')
+  //const name = prompt('What is your name?')
   appendMessage('You joined')
-  appendMessage('A staff member will soonly join you, this might take a few minutes')
-  appendMessage('To get more info please email us at: later@later.later')
-  socket.emit('new-user', roomName, name)
+  socket.emit('new-user', roomName, username, 1)
 
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
     const message = messageInput.value
-    appendMessage(`You: ${message}`)
-    socket.emit('send-chat-message', roomName, message)
+    appendMessage(`You ` + '<i class="fas fa-badge-check"></i>' + `: ${message}`) //im here
+    socket.emit('send-chat-message', roomName, message, 1)
     messageInput.value = ''
   })
 }
@@ -25,26 +28,26 @@ socket.on('room-created', room => {
   const roomElement = document.createElement('div')
   roomElement.innerText = room
   const roomLink = document.createElement('a')
-  roomLink.href = `/${room}`
+  roomLink.href = `/${room}/mod`
   roomLink.innerText = 'join'
   roomContainer.append(roomElement)
   roomContainer.append(roomLink)
 })
 
 socket.on('chat-message', data => {
-    appendMessage(`${data.name}:` + '<i class="fas fa-badge-check"></i>' + ` ${data.message}`)
+  appendMessage(`${data.name}: ${data.message}`)
 })
 
-socket.on('user-connected', name, verified => { //here this is socket.on not socket.emit
-    appendMessage(`${name}` + '<i class="fas fa-badge-check"></i>' + `connected`)
+socket.on('user-connected', name => {
+  appendMessage(`${name} connected`)
 })
 
-socket.on('user-disconnected', name, verified => {
-    appendMessage(`${name}` + '<i class="fas fa-badge-check"></i>' + `disconnected`)
+socket.on('user-disconnected', name => {
+  appendMessage(`${name} disconnected`)
 })
 
-function appendMessage(message) {
+function appendMessage(message) { //here so uhh we need to 1 sec
   const messageElement = document.createElement('div')
   messageElement.innerHTML = message
-  messageContainer.append(messageElement) //we need to add a scroll shit cuz i cant read msgs after the container is full
+  messageContainer.append(messageElement)
 }
