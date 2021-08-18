@@ -14,58 +14,73 @@
         margin: 0;
         display: flex;
         justify-content: center;
-        background-color:#F6F6F6;
-    }
-    ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #09BA81;
-}
+        background-color:#f3f3f3;
+        }
+        ul {
+          list-style-type: none;
+          margin-top: 5px;
+          padding: 0;
+          overflow: hidden;
+          border: 1px solid #e7e7e7;
+          background-color: #f3f3f3;
+          border-radius: 25px;
+        }
 
-li {
-  float: left;
-}
+        li {
+          float: left;
+        }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+        li a {
+          
+          display: block;
+          color: #666;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
 
-li a:hover:not(.active) {
-  background-color: #0b9e6d;
-}
+        li a:hover:not(.active) {
+          background-color: #ddd;
+        }
 
-.active {
-  background-color: rgb(12, 151, 107);
-}
+        li a.active {
+          color: white;
+          background-color: #04AA6D;
+        }
+        #footer {
+          position: fixed;
+          height: 70px;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color: #04AA6D;
+          color: white;
+          padding: 10px;
+        }
 
-#new-room-parent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, - 50%);
-}
-.new-room-button {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid ;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+        #new-room-parent {
+          position: absolute;
+          top: 50%;
+          left: 31%;
+          transform: translate(-50%, - 50%);
+        }
+        .new-room-button {
+          width: 500%;
+          padding: 12px 20px;
+          height: 60px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid ;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
   </style>
 
 </head>
 <body>
 <div class="navbar">
   <ul>
-    <li><a class="active" href="#home">Home</a></li>
+    <li><a class="active" href="/index.ejs">Home</a></li>
     <li><a href="#us">Who are we</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#about">About</a></li>
@@ -86,6 +101,10 @@ console.log(randomText())
     <input name="room" type="text" id="setme" hidden>
     <button class = "new-room-button" type="submit">New Room</button>
   </form>
+</div>
+<div id = "footer">
+  <p>You are not alone!</p>
+  <h5>this website is made by teens from organization Latet in israel made to support kids and teens that need help to get out of the closet</h5>
 </div>
 </body>
 </html>

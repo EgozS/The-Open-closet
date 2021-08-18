@@ -8,7 +8,7 @@
   <link href="https://kit-pro.fontawesome.com/releases/v5.15.0/css/pro.min.css" rel="stylesheet" />
   <title><%= roomName %></title>
   <script>
-    const roomName = "<%= roomName %>" //cool
+    const roomName = "<%= roomName %>" 
     const username = "<%= username %>"
   </script>
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
@@ -19,6 +19,7 @@
       margin: 0;
       display: flex;
       justify-content: center;
+      background-color:#f3f3f3;
     }
     #message-container {
       width: 80%;
@@ -26,29 +27,29 @@
       overflow: scroll;
     }
     #message-container div {
-      background-color: #F6F6F6;
+      background-color:#f3f3f3;
       padding: 5px;
     }
     #message-container div:nth-child(2n) {
-      background-color: #F6F6F6;
+      background-color:#f3f3f3;
     }
     #send-container {
       position: fixed;
       padding-bottom: 30px;
       bottom: 0;
-      background-color: #F6F6F6;
+      background-color:#f3f3f3;
       max-width: 1200px;
       width: 80%;
       display: flex;
     }
     #message-input {
         width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
       }
     #send-button {
   background-color: #09BA81; /* Green */

@@ -15,49 +15,89 @@
         margin: 0;
         display: flex;
         justify-content: center;
-        background-color:#F6F6F6;
-    }
-    ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #09BA81;
-}
+        background-color:#f3f3f3;
+        }
+        ul {
+          list-style-type: none;
+          margin-top: 5px;
+          padding: 0;
+          overflow: hidden;
+          border: 1px solid #e7e7e7;
+          background-color: #f3f3f3;
+          border-radius: 25px;
+        }
 
-li {
-  float: left;
-}
+        li {
+          float: left;
+        }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+        li a {
+          
+          display: block;
+          color: #666;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
 
-li a:hover:not(.active) {
-  background-color: #0b9e6d;
-}
+        li a:hover:not(.active) {
+          background-color: #ddd;
+        }
 
-.active {
-  background-color: rgb(12, 151, 107);
-}
+        li a.active {
+          color: white;
+          background-color: #04AA6D;
+        }
 
-#room-container {
-  max-width: 500px;
-  margin: auto;
-  margin-bottom: auto;
-  background: white;
-  padding: 10px;
-}
-#new-room-parent {
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-}
+        #room-container {
+          width: 10%;
+          background: #09BA81;
+          position: absolute;
+          top: 21%;
+          left: 50%;
+          transform: translate(-50%, - 50%);
+          border: #000000;
+          border-radius: 2px;
+        }
+        #new-room-parent {
+          position: absolute;
+          top: 20%;
+          left: 70%;
+          transform: translate(-50%, - 50%);
+        }
+        #room-name {
+          width: 58%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          height: 60px;
+        }
+        #room-create {
+          background-color: #09BA81; /* Green */
+          border: none;
+          color: white;
+          padding: 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 20px;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 25px;
+        }
+        #footer {
+          position: fixed;
+          height: 70px;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color: #04AA6D;
+          color: white;
+          padding: 10px;
+        }
 
   </style>
 
@@ -65,7 +105,7 @@ li a:hover:not(.active) {
 <body>
 <div class="navbar">
   <ul>
-    <li><a class="active" href="#home">Home</a></li>
+    <li><a class="active" href="index.ejs">Home</a></li>
     <li><a href="#us">Who are we</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#about">About</a></li>
@@ -76,14 +116,17 @@ li a:hover:not(.active) {
     <% Object.keys(rooms).forEach(room => { %>
       <div><%= room %></div>
       <a href="/<%= room %>/mod">Join</a>
-      
     <% }) %>
   </div>
   <div id="new-room-parent">
   <form action="/room" method="POST" id="new-room">
-    <input name="room" type="text" required>
-    <button type="submit">New Room</button>
+    <input name="room" type="text" id ="room-name" required>
+    <button type="submit" id="room-create">Create chat</button>
   </form>
+</div>
+<div id = "footer">
+  <p>You are not alone!</p>
+  <h5>this website is made by teens from organization Latet in israel made to support kids and teens that need help to get out of the closet</h5>
 </div>
 </body>
 </html>

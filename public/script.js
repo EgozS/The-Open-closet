@@ -5,11 +5,11 @@ const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
 if (messageForm != null) {
-  const name = prompt('What is your name?')
+  const nameofuser = prompt('What is your name? (leave black if annonymus)')
   appendMessage('You joined')
   appendMessage('A staff member will soonly join you, this might take a few minutes')
   appendMessage('To get more info please email us at: later@later.later')
-  socket.emit('new-user', roomName, name)
+  socket.emit('new-user', roomName, nameofuser)
 
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
@@ -32,19 +32,23 @@ socket.on('room-created', room => {
 })
 
 socket.on('chat-message', data => {
-    appendMessage(`${data.name}:` + '<i class="fas fa-badge-check"></i>' + ` ${data.message}`)
+    appendMessage(`${data.nameofuser}:` + '<i class="fas fa-badge-check"></i>' + ` ${data.message}`)
 })
 
-socket.on('user-connected', name, verified => { //here this is socket.on not socket.emit
-    appendMessage(`${name}` + '<i class="fas fa-badge-check"></i>' + `connected`)
+socket.on('user-connected', nameofuser, verified => { 
+    appendMessage(`${nameofuser}` + '<i class="fas fa-badge-check"></i>' + `connected`)
 })
 
-socket.on('user-disconnected', name, verified => {
-    appendMessage(`${name}` + '<i class="fas fa-badge-check"></i>' + `disconnected`)
+socket.on('user-disconnected', nameofuser, verified => {
+    appendMessage(`${nameofuser}` + '<i class="fas fa-badge-check"></i>' + `disconnected`)
 })
 
 function appendMessage(message) {
   const messageElement = document.createElement('div')
   messageElement.innerHTML = message
-  messageContainer.append(messageElement) //we need to add a scroll shit cuz i cant read msgs after the container is full
+  messageContainer.append(messageElement)
+}
+
+if (nameofuser.value == 'undefined'){
+  nameofuser = "Annonymus"
 }
