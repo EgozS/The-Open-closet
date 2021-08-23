@@ -1,4 +1,4 @@
-const express = require('express') //hello
+const express = require('express') //line 40 /:
 const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
@@ -36,7 +36,7 @@ app.get('/login', (req, res) => {
   res.render('login') 
 })
 
-app.post('/chklogin', (req, res) => {
+app.post('/chklogin', (req, res) => { 
   console.log(db.get('logins')['username'].includes(req.body.username));
   usrname = req.body.username;
   if (db.get('logins')['username'].includes(req.body.username)) {

@@ -13,7 +13,6 @@ if (messageForm != null) {
   //const name = prompt('What is your name?')
   appendMessage('You joined')
   socket.emit('new-user', roomName, username, 1)
-
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
     const message = messageInput.value
